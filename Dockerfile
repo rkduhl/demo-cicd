@@ -1,7 +1,13 @@
 # Stage 1: Build the React app
-FROM node:20 AS build
+FROM node:20-alpine
 WORKDIR /app
-COPY package*.json ./
+
+COPY package*.json .
+
 RUN npm install
+
 COPY . .
-RUN npm run build
+
+EXPOSE 3000
+
+RUN npm run dev
